@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ElToro Games - Home - Loader</title>
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.3.2.min.css" />
+    </head>
+    <body>
+        <!-- BEGIN: Welcome Page -->
+        <div id="pageWelcome" data-role="page" data-theme="a">
+            <div data-role="header" data-id="main-header" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <a href="#" onclick="board.goHome();" data-transition="fade" data-role="button" data-icon="home" data-iconpos="notext" class="ui-disabled">Home</a>
+                <h1>EL Toro</h1>
+                <a href="#" onclick="board.showDebug();" data-role="button" data-icon="alert">&nbsp;</a>
+            </div>
+            <div data-role="content">
+                <h1>Tic-Tac-Toe</h1>
+                <p>Welcome</p>
+                <div>
+                    <a href="#" onclick="board.currentState.userStarted();" data-transition="fade" data-role="button" data-theme="b" data-corners="true" data-icon="gear" data-iconpos="right" data-shadow="true" data-iconshadow="true">
+                        start
+                    </a>
+                </div>
+            </div>
+            <div data-role="footer" data-id="main-footer" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <h1>Game Center</h1>
+            </div>
+        </div>
+        <!-- END: Welcome Page -->
+        
+        <!-- BEGIN: Select Mode Page -->
+        <div id="pageSelectMode" data-role="page" data-theme="a">
+            <div data-role="header" data-id="main-header" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <a href="#" onclick="board.goHome();" data-transition="fade" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>EL Toro</h1>
+                <a href="#" onclick="board.showDebug();" data-transition="fade" data-role="button" data-icon="home">Debug</a>
+            </div>
+            <div data-role="content">
+                <h1>Tic-Tac-Toe</h1>
+                <p>How you would like to play?</p>
+                <div>
+                    <a id="btnSinglePlayer" href="#" onclick="board.currentState.singlePlayerSelected();" data-transition="fade" data-role="button" data-theme="b" data-corners="true" data-icon="gear" data-iconpos="right" data-shadow="true" data-iconshadow="true">
+                        Single Player
+                    </a>
+                    <a id="btnMultiPlayer" href="#" onclick="board.currentState.multiPlayerSelected();" data-role="button" data-theme="b" data-corners="true" data-icon="gear" data-iconpos="right" data-shadow="true" data-iconshadow="true">
+                        Multi Player
+                    </a>
+                </div>
+            </div>
+            <div data-role="footer" data-id="main-footer" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <h1>Game Center</h1>
+            </div>
+        </div>
+        <!-- END: Select Mode Page -->
+        
+        <!-- BEGIN: Sign In Page -->
+        <div id="pageSignIn" data-role="page" data-theme="a">
+            <div data-role="header" data-id="main-header" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <a href="#" onclick="board.goHome();" data-transition="fade" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>EL Toro</h1>
+                <a href="#" onclick="board.showDebug();" data-role="button" data-icon="alert">&nbsp;</a>
+            </div>
+            <div data-role="content">
+                <h1>Tic-Tac-Toe</h1>
+                <h2>
+                    Sign In
+                    <a href="#" onclick="board.currentState.cancelSignIn();" class="ui-disabled" data-inline="true" data-mini="true" data-transition="fade" data-role="button" data-theme="e" data-corners="true" >
+                        Sign Up
+                    </a>
+                </h2>
+                <table>
+                    <tr>
+                        <th>Username:</th>
+                        <td><input type="text" id="signInUsername" data-theme="b" /></td>
+                    </tr>
+                    <tr>
+                        <th>Password:</th>
+                        <td><input type="text" id="signInPassword" data-theme="b" /></td>
+                    </tr>
+                    <tr>
+                        <th/>
+                        <td>
+                            <a href="#" onclick="board.currentState.signIn();" data-inline="true" data-transition="fade" data-role="button" data-theme="b" data-corners="true">
+                                OK
+                            </a>
+                            <a href="#" onclick="board.currentState.cancelSignIn();" data-inline="true" data-transition="fade" data-role="button" data-theme="c" data-corners="true">
+                                Cancel
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div data-role="footer" data-id="main-footer" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <h1>Game Center</h1>
+            </div>
+        </div>
+        <!-- END: Sign In Page -->
+        
+        <!-- BEGIN: Find Player Page -->
+        <div id="pageFindPlayer" data-role="page" data-theme="a">
+            <div data-role="header" data-id="main-header" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <a href="#" onclick="board.currentState.stopWaitingAsk();" data-transition="fade" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>EL Toro</h1>
+                <a href="#" onclick="board.showDebug();" data-role="button" data-icon="alert">&nbsp;</a>
+            </div>
+            <div data-role="content">
+                <h1>Tic-Tac-Toe</h1>
+                <h2>Find Player</h2>
+                <div style="color:yellow; font-style:italic;">Please wait, looking for another player</div>
+                <div id="pageFindPlayerMessage" style="font-style:italic;"></div>
+                <p/>
+                <a href="#" onclick="board.currentState.stopWaiting();" data-inline="true" data-transition="fade" data-role="button" data-theme="b" data-corners="true">
+                    Stop Waiting
+                </a>
+            </div>
+            <div data-role="footer" data-id="main-footer" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <h1>Game Center</h1>
+            </div>
+        </div>
+        <!-- END: Find Player Page -->
+        
+        <!-- BEGIN: Game Board -->
+        <div id="pageGameBoard" data-role="page" data-theme="a">
+            <div data-role="header" data-id="main-header" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <a href="#" onclick="board.currentState.stopWaitingAsk();" data-transition="fade" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+                <h1>EL Toro</h1>
+                <a href="#" onclick="board.showDebug();" data-role="button" data-icon="alert">&nbsp;</a>
+            </div>
+            <div data-role="content">
+                <h3>Play!</h3>
+                <div data-role="content" data-theme="d">
+                    <table border="1" cellspacing="0" style="width:100%">
+                        <tr>
+                            <td align="center" valign="middle" id="sqr1" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                            <td align="center" valign="middle" id="sqr2" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                            <td align="center" valign="middle" id="sqr3" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                        </tr>
+                        <tr>
+                            <td align="center" valign="middle" id="sqr4" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                            <td align="center" valign="middle" id="sqr5" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                            <td align="center" valign="middle" id="sqr6" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                        </tr>
+                        <tr>
+                            <td align="center" valign="middle" id="sqr7" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                            <td align="center" valign="middle" id="sqr8" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                            <td align="center" valign="middle" id="sqr9" onclick="board.currentState.clickHandler(this);"><img src="img/-.png" /></td>
+                        </tr>
+                    </table>
+                    <hr/>
+                    <table>
+                        <tr>
+                            <th>My Token:</th>
+                            <td><div id="pageGameBoardMyToken" /></td>
+                        </tr>
+                        <tr>
+                            <th>State:</th>
+                            <td><div id="pageGameBoardState" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div data-role="footer" data-id="main-footer" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <h1>Game Center</h1>
+            </div>
+        </div>
+        <!-- END: Game Board -->
+        
+        <!-- BEGIN: Debug Page -->
+        <div id="pageDebug" data-role="page" data-theme="a">
+            <div data-role="header" data-id="main-header" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <a href="#" onclick="board.goHome();" data-transition="fade" data-role="button" data-icon="home" data-iconpos="notext" class="ui-disabled">Home</a>
+                <h1>Debug</h1>
+                <a href="#" onclick="board.hideDebug();" data-role="button" data-icon="delete">Close</a>
+            </div>
+            <div data-role="content">
+                <div id="debugContent" />
+            </div>
+            <div data-role="footer" data-id="main-footer" data-position="fixed" data-fullscreen="false" data-theme="d">
+                <h1>Game Center</h1>
+            </div>
+        </div>
+        <!-- END: Debug Page -->
+        
+        <!-- BEGIN: Popups -->
+        <div data-role="popup" id="popupPleaseWait" data-dismissible="false" class="ui-popup" data-theme="e" data-overlay-theme="b">
+            <div class="ui-content ui-body-e ui-overlay-shadow ui-corner-all" aria-disabled="false" data-shadow="true" data-corners="true" data-transition="none" data-position-to="origin">
+                    <div id="popupPleaseWaitMessage">&nbsp;</div>
+            </div>
+        </div>
+        <!-- END: Popups -->
+    </body>
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.3.2.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!-- My Scripts -->
+    <script type="text/javascript" src="js/cometd.js"></script>
+    <script type="text/javascript" src="js/jquery.cometd.js"></script>
+    <script type="text/javascript" src="js/UtilClass.js"></script>
+    <script type="text/javascript" src="js/NetworkClass.js"></script>
+    <script type="text/javascript" src="js/SFDCClass.js"></script>
+    <script type="text/javascript" src="js/TicTacToe.js"></script>
+</html>
